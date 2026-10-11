@@ -1,36 +1,28 @@
+#include "llm/diagnostics.hpp"
 
 #include <iostream>
-#include <string_view>
 
-namespace llm
-{
-
-    constexpr std::string_view kProjectName = "cpp-llm";
-    constexpr std::string_view kVersion = "0.1.0";
-
-    void print_banner()
-    {
-        std::cout << "====================================\n";
-        std::cout << "  " << kProjectName << " v" << kVersion << '\n';
-        std::cout << "  From-scratch C++ language model\n";
-        std::cout << "====================================\n";
-    }
-
-    void print_status()
-    {
-        std::cout << "\nPhase 0: Environment initialized\n";
-        std::cout << "Language: C++20\n";
-        std::cout << "Backend: CPU\n";
-        std::cout << "Pretrained weights: None\n";
-        std::cout << "Next milestone: Tensor engine\n";
-    }
-
-} // namespace llm
+using namespace std;
 
 int main()
 {
-    llm::print_banner();
-    llm::print_status();
+    cout << "====================================\n";
+    cout << "  cpp-llm v0.1.0\n";
+    cout << "  From-scratch C++ language model\n";
+    cout << "====================================\n";
+
+    const double sample_value = 0.5;
+
+    if (!llm::diagnostics::is_finite(sample_value))
+    {
+        cerr << "Diagnostic check failed.\n";
+        return 1;
+    }
+
+    cout << "\nPhase 0B: Diagnostics initialized\n";
+    cout << "C++ standard: C++20\n";
+    cout << "Numerical diagnostics: Ready\n";
+    cout << "Next milestone: Tensor engine\n";
 
     return 0;
 }
